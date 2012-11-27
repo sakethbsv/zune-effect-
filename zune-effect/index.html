@@ -23,10 +23,6 @@
 	left:0px;
 	top:0px;
 	z-index:2;
-/*	background: #999; 
-
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#000000'); background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#000));
-background: -moz-linear-gradient(top,  #ccc,  #000);  */
 }
 .Box2{
 	position:absolute;
@@ -46,7 +42,6 @@ background: -moz-linear-gradient(top,  #ccc,  #000);  */
 <div id="7" class="Box2 Normal" style="left:0px; top:600px"></div>
 <div id="8" class="Box2 Normal" style="left:600px; top:400px"></div>
 
-<!--<div id="20" class="Box2 Fullhd" style="left:1200px; top:400px"></div>-->
 <div id="13" class="Box2 Normal" style="left:1200px; top:400px"></div>
 <div id="14" class="Box2 Normal" style="left:1200px; top:600px"></div>
 <div id="21" class="Box2 Fullhd" style="left:1400px; top:400px"></div>
@@ -125,13 +120,10 @@ function setupGrid(){
 		for(i = 1; i < 15; i++){
 			
 			if($('#' + i).hasClass('Box1')){
-				//console.log(imagesBig[Math.floor(getRandom("2"))] + "randomurl");	
 				
 				$("#" + i).css("background-image", "url(\""+imagesBig[Math.floor(getRandom("2"))]+"\")");	
 			}
 			else{
-				//				console.log(imagesBig[getRandom("1")] + "randomurl");	
-				
 				$("#" + i).css("background-image", "url(\""+imagesSmall[Math.floor(getRandom("1"))]+"\")");			
 			}
 		}
@@ -139,13 +131,9 @@ function setupGrid(){
 			for(i = 15; i < 25; i++){
 			
 				if($('#' + i).hasClass('Box1')){
-				//console.log(getRandom("2") + "randomurl");	
-				
 				$("#" + i).css("background-image", "url(\""+imagesBig[Math.floor(getRandom("2"))]+"\")");	
 			}
 			else{
-				//				console.log(imagesBig[getRandom("1")] + "randomurl");	
-				
 				$("#" + i).css("background-image", "url(\""+imagesSmall[Math.floor(getRandom("1"))]+"\")");			
 			}
 			}
@@ -153,8 +141,7 @@ function setupGrid(){
 	}
 	
 	start();
-	
-	
+		
 	/* puts the image required as the background of the given id */
 	
 	function put(id){
@@ -162,28 +149,17 @@ function setupGrid(){
 		if($('#' + id).hasClass('Box1')){
 			randommax = imagesBig[Math.floor(getRandom("2"))];
 			presbg = $('#' + id).css('background-image');
-			//console.log(presbg + randommax + "init");
 			var i = presbg.lastIndexOf("/");
 			presbg = presbg.substring((i + 1),presbg.length - 1);
-			//console.log(presbg + randommax);
 			while(presbg == randommax) randommax = imagesBig[Math.floor(getRandom("2"))];
-				//		console.log(presbg + randommax + "later");
-
-
-			//console.log(randommax + "random num fr url" + $('#' + id).css('background-image'));
-			//$('#' + id).css("background-image", "url(/imagesBig[Math.floor(getRandom("2"))])"); 
 			$("#" + id).css("background-image", "url(\""+randommax+"\")");	
 
-			//document.getElementById(id).style.backgroundImage = imagesBig[Math.floor(getRandom("2"))];
 		}
 		else{
 			randommax = imagesSmall[Math.floor(getRandom("1"))];
 			presbg = $('#' + id).css('background-image');console.log(presbg + randommax + "init");
 			while(presbg == randommax) randommax = imagesSmall[Math.floor(getRandom("1"))];
-			//console.log(presbg + randommax + "later");
-			
 			$("#" + id).css("background-image", "url(\""+randommax+"\")");	
-	//		document.getElementById(id).style.backgroundImage = imagesSmall[Math.floor(getRandom("1"))];
 		}
 	}
 	
@@ -197,18 +173,12 @@ function setupGrid(){
 		console.log(randomId + "swapping this div");
 		$("#" + randomId).fadeOut(1000);
 		setTimeout(function(){put(randomId)}, 1000); 
-		//put(randomId);
 		selector = "#" + randomId; 
 		setTimeout(function(){$(selector).fadeIn(1000)}, 10); 
-		
-		
-	}
-	
-	
+		}
 		setInterval(function(){swap()},4000);
 		console.log("done");
-		
-		}
+	}
 		
 function preloadImages(){
 	
@@ -226,7 +196,6 @@ function initGrid(){
 	
 	//preloadImages();
 	
-	
 }
 
 function getRandom(int){
@@ -237,15 +206,11 @@ function getRandom(int){
 }
 function initGridEffects(){
 	
-	console.log(imagesSmall[Math.floor(getRandom("1"))]);
-	console.log(imagesBig[Math.floor(getRandom("2"))]);
 
 	function overlayChange(){
 	color = bg[Math.floor(Math.random()*(bg.length - 1))];
-	console.log(gen + " " + color);
 	while(color == gen)	color = bg[1 + Math.floor(Math.random()*(bg.length))];
 	gen = color;
-	console.log(color + "color");
 	$('#overlay').animate({
                 backgroundColor:color
 	}, 3000, function(){
